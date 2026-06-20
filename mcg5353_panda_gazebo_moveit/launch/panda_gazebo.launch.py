@@ -12,7 +12,7 @@ def generate_launch_description():
     robot_xacro = PathJoinSubstitution(
         [pkg, "config", "panda_gazebo.urdf.xacro"])
     world = PathJoinSubstitution(
-        [pkg, "worlds", "panda_table.world"])
+        [pkg, "worlds", "panda_sorting.world"])
         
 
     robot_description = {
