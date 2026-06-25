@@ -20,7 +20,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='ali',
-    maintainer_email='[alikarimzade999@gmail.com]',
+    maintainer_email='alikarimzade999@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     extras_require={

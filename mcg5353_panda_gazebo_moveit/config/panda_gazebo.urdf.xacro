@@ -283,7 +283,7 @@
         <origin rpy="0 0 0" xyz="0 0 0.0584" />
         <axis xyz="0 -1 0" />
         <limit effort="20" lower="0.0" upper="0.04" velocity="0.2" />
-        <mimic joint="panda_finger_joint1" />
+        <mimic joint="panda_finger_joint1" multiplier="1.0" offset="0.0"/>
     </joint>
 
 
@@ -309,6 +309,7 @@
         <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
         </hardware>
+
         <xacro:gazebo_position_joint joint_name="panda_joint1" initial_value="0.0"/>
         <xacro:gazebo_position_joint joint_name="panda_joint2" initial_value="-0.785"/>
         <xacro:gazebo_position_joint joint_name="panda_joint3" initial_value="0.0"/>
@@ -316,7 +317,26 @@
         <xacro:gazebo_position_joint joint_name="panda_joint5" initial_value="0.0"/>
         <xacro:gazebo_position_joint joint_name="panda_joint6" initial_value="1.571"/>
         <xacro:gazebo_position_joint joint_name="panda_joint7" initial_value="0.785"/>
-        <xacro:gazebo_position_joint joint_name="panda_finger_joint1" initial_value="0.04"/>
+
+        <joint name="panda_finger_joint1">
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.04</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="panda_finger_joint2">
+            <param name="mimic">panda_finger_joint1</param>
+            <param name="multiplier">1</param>
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.04</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
     </ros2_control>
 
     <gazebo>
