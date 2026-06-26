@@ -275,14 +275,14 @@
         <child link="panda_leftfinger" />
         <origin rpy="0 0 0" xyz="0 0 0.0584" />
         <axis xyz="0 1 0" />
-        <limit effort="20" lower="0.0" upper="0.04" velocity="0.2" />
+        <limit effort="100" lower="0.0" upper="0.04" velocity="0.02" />
     </joint>
     <joint name="panda_finger_joint2" type="prismatic">
         <parent link="panda_hand" />
         <child link="panda_rightfinger" />
         <origin rpy="0 0 0" xyz="0 0 0.0584" />
         <axis xyz="0 -1 0" />
-        <limit effort="20" lower="0.0" upper="0.04" velocity="0.2" />
+        <limit effort="100" lower="0.0" upper="0.04" velocity="0.02" />
         <mimic joint="panda_finger_joint1" multiplier="1.0" offset="0.0"/>
     </joint>
 
@@ -338,6 +338,24 @@
             <state_interface name="effort"/>
         </joint>
     </ros2_control>
+
+    <gazebo reference="panda_leftfinger">
+      <mu1>10.0</mu1>
+      <mu2>10.0</mu2>
+      <kp>100000.0</kp>
+      <kd>10.0</kd>
+      <minDepth>0.005</minDepth>
+      <maxVel>0.001</maxVel>
+    </gazebo>
+
+    <gazebo reference="panda_rightfinger">
+      <mu1>10.0</mu1>
+      <mu2>10.0</mu2>
+      <kp>100000.0</kp>
+      <kd>10.0</kd>
+      <minDepth>0.005</minDepth>
+      <maxVel>0.001</maxVel>
+    </gazebo>
 
     <gazebo>
         <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
